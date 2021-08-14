@@ -1,10 +1,11 @@
 export interface IBlog {
-  id: number;
+  id?: number;
+  _id?: string;
   title: string;
   content: string;
   description: string;
-  imageSrc: string;
-  comments: Array<IComment>;
+  imageSrc?: string;
+  comments?: Array<IComment>;
   keywords: Array<string>;
 }
 

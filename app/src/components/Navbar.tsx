@@ -32,6 +32,9 @@ const Navbar = () => {
           <Link className="nav-link" to="/blogs">
             Blog
           </Link>
+          <Link className="nav-link" to="/blog/create">
+            Create
+          </Link>
           <Link className="nav-link" to="/contact">
             Contact
           </Link>

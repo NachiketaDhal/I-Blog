@@ -25,11 +25,7 @@ const About = () => {
             obcaecati, sapiente voluptatum ipsa eveniet repellendus. Delectus
             facilis minus culpa tenetur, vel praesentium adipisci, labore
             possimus aperiam numquam alias mollitia corrupti recusandae sunt
-            debitis expedita suscipit consectetur saepe. Necessitatibus eveniet
-            possimus incidunt quae officia sapiente aspernatur corporis
-            perferendis commodi sunt explicabo perspiciatis recusandae,
-            exercitationem a asperiores delectus sequi animi debitis obcaecati
-            in alias consectetur modi iure!
+            debitis expedita su
           </p>
         </div>
       </div>

@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import Styled from "styled-components";
 
 import Underline from "./Underline";
-import { IBlog, IComment } from "../interfaces";
+import { IComment } from "../interfaces";
 import Button from "./Button";
 
-const Comments = ({ blog }: { blog: IBlog | undefined }) => {
+const Comments = ({ pComments }: { pComments: IComment[] | undefined }) => {
   const [nickname, setNickname] = useState<string>("");
   const [reply, setReply] = useState<string>("");
   const [comments, setComments] = useState<IComment[]>(
-    blog?.comments || [{ name: "User1", comment: "Good Post!" }]
+    pComments || [{ name: "User1", comment: "Good Post!" }]
   );
 
-  console.log(blog?.comments);
+  console.log(pComments);
   console.log(comments);
 
   const handleSubmit = (e: React.FormEvent) => {

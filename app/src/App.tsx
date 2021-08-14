@@ -9,6 +9,7 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import Error from "./pages/Error";
 import Footer from "./components/Footer";
+import CreateBlog from "./pages/CreateBlog";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/about" component={About} exact />
           <Route path="/contact" component={Contact} exact />
           <Route path="/blogs" component={Blogs} exact />
+          <Route path="/blog/create" component={CreateBlog} exact />
           <Route path="/blog/:id" component={SingleBlog} exact />
           <Route path="*" component={Error} />
         </Switch>
