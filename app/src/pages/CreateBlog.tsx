@@ -13,6 +13,10 @@ const CreateBlog = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!title || !description || !content) {
+      alert("Please provide all data");
+      return;
+    }
     await axios.post("http://localhost:8000/api/blog/create", {
       title,
       description,

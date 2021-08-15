@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Styled from "styled-components";
 
 // import { blogData } from "../data";
@@ -15,6 +15,7 @@ const SingleBlog = () => {
 
   const { id } = useParams<any>();
   // console.log(id);
+  const history = useHistory();
 
   const fetchBlogPost = async () => {
     setLoading(true);
@@ -23,6 +24,19 @@ const SingleBlog = () => {
 
     setBlog(fetchedBlog.data.foundBlog);
     setLoading(false);
+  };
+
+  const deleteBlogPost = async () => {
+    try {
+      if (!window.confirm("Are you sure to delete this?")) {
+        return;
+      }
+      await axios.delete(`http://localhost:8000/api/blog/${id}`);
+      alert("Post deleted successfully");
+      history.push("/blogs");
+    } catch (error) {
+      alert("Failed to delete");
+    }
   };
 
   useEffect(() => {
@@ -72,10 +86,11 @@ const SingleBlog = () => {
           );
         })}
       </div>
-      <div>
+      <div className="buttons-container">
         <Link to="/blogs">
           <Button text="Go back to All Blogs" />
         </Link>
+        <button onClick={deleteBlogPost}>Delete this blog</button>
       </div>
       <div>
         <Comments pComments={blog?.comments} />
@@ -108,6 +123,24 @@ const Container = Styled.section`
   .blog-content {
     padding: 20px 40px;
     border-bottom: 1px solid #c1221c;
+  }
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    button {
+    padding: 10px 8px;
+    background-color: #323232;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    border-color: transparent;
+    transition: all .3s ease-in-out;
+    :hover {
+      background-color: transparent;
+      border-color: #000000;
+      color: #000000;
+    }
+    }
   }
 `;
 
