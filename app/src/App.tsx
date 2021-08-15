@@ -10,11 +10,15 @@ import Contact from "./pages/Contact";
 import Error from "./pages/Error";
 import Footer from "./components/Footer";
 import CreateBlog from "./pages/CreateBlog";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
+  // const history = useHistory();
+
   return (
     <React.Fragment>
       <Router>
+        <ScrollToTop />
         <Navbar />
         <Switch>
           <Route path="/" component={Home} exact />
