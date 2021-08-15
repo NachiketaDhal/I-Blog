@@ -8,6 +8,7 @@ import { IBlog } from "../interfaces";
 import Button from "./Button";
 import Comments from "./Comments";
 import Loading from "./Loading";
+import PathStripe from "./PathStripe";
 
 const SingleBlog = () => {
   const [loading, setLoading] = useState(false);
@@ -56,53 +57,56 @@ const SingleBlog = () => {
   }
 
   return (
-    <Container>
-      <div className="blog-heading">
-        <h1>{blog?.title}</h1>
-      </div>
-      <div className="hero-img">
-        <img
-          src={
-            blog?.imageSrc ||
-            "https://images.pexels.com/photos/5022456/pexels-photo-5022456.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          }
-          alt="blog-img"
-        />
-      </div>
-      <div className="keywords">
-        {blog?.keywords.map((k, i) => {
-          return (
-            <span key={i} className="keyword">
-              {k}
-            </span>
-          );
-        })}
-      </div>
-      <div className="blog-content">
-        {blog?.content.split(".")?.map((c, i) => {
-          return (
-            <p key={i} style={{ textAlign: "justify" }}>
-              <span style={{ fontSize: "22px", color: "#c1221c" }}>
-                &ldquo;
+    <React.Fragment>
+      <PathStripe path={id} singleBlog />
+      <Container>
+        <div className="blog-heading">
+          <h1>{blog?.title}</h1>
+        </div>
+        <div className="hero-img">
+          <img
+            src={
+              blog?.imageSrc ||
+              "https://images.pexels.com/photos/5022456/pexels-photo-5022456.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            }
+            alt="blog-img"
+          />
+        </div>
+        <div className="keywords">
+          {blog?.keywords.map((k, i) => {
+            return (
+              <span key={i} className="keyword">
+                {k}
               </span>
-              {`${c} `}
-              <span style={{ fontSize: "22px", color: "#c1221c" }}>
-                &rdquo;
-              </span>
-            </p>
-          );
-        })}
-      </div>
-      <div className="buttons-container">
-        <Link to="/blogs">
-          <Button text="Go back to All Blogs" />
-        </Link>
-        <button onClick={deleteBlogPost}>Delete this blog</button>
-      </div>
-      <div>
-        <Comments pComments={blog?.comments} />
-      </div>
-    </Container>
+            );
+          })}
+        </div>
+        <div className="blog-content">
+          {blog?.content.split(".")?.map((c, i) => {
+            return (
+              <p key={i} style={{ textAlign: "justify" }}>
+                <span style={{ fontSize: "22px", color: "#c1221c" }}>
+                  &ldquo;
+                </span>
+                {`${c} `}
+                <span style={{ fontSize: "22px", color: "#c1221c" }}>
+                  &rdquo;
+                </span>
+              </p>
+            );
+          })}
+        </div>
+        <div className="buttons-container">
+          <Link to="/blogs">
+            <Button text="Go back to All Blogs" />
+          </Link>
+          <button onClick={deleteBlogPost}>Delete this blog</button>
+        </div>
+        <div>
+          <Comments pComments={blog?.comments} />
+        </div>
+      </Container>
+    </React.Fragment>
   );
 };
 

@@ -25,7 +25,7 @@ const Blog = ({ id, imgSrc, title, description, keywords }: IBlogProps) => {
                   );
                 })}
               </div>
-              <Link to={`/blog/${id}`}>
+              <Link to={`/blogs/${id}`}>
                 Read More <span>&rarr;</span>
               </Link>
             </div>

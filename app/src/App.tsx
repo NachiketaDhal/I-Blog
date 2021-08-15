@@ -13,8 +13,6 @@ import CreateBlog from "./pages/CreateBlog";
 import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
-  // const history = useHistory();
-
   return (
     <React.Fragment>
       <Router>
@@ -24,9 +22,9 @@ const App = () => {
           <Route path="/" component={Home} exact />
           <Route path="/about" component={About} exact />
           <Route path="/contact" component={Contact} exact />
+          <Route path="/blogs/:id" component={SingleBlog} exact />
           <Route path="/blogs" component={Blogs} exact />
           <Route path="/blog/create" component={CreateBlog} exact />
-          <Route path="/blog/:id" component={SingleBlog} exact />
           <Route path="*" component={Error} />
         </Switch>
         <Footer />

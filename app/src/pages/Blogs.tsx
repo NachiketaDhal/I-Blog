@@ -36,7 +36,7 @@ const Blogs = () => {
   if (loading) {
     return (
       <div>
-        <PathStripe path="blogs" />
+        <PathStripe path="Blogs" />
         <Loading />;
       </div>
     );
@@ -44,7 +44,7 @@ const Blogs = () => {
 
   return (
     <React.Fragment>
-      <PathStripe path="blogs" />
+      <PathStripe path="Blogs" />
       <section className="blogs-section">
         {blogData.map((bd: IBlog, i) => {
           return (

@@ -2,12 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Styled from "styled-components";
 
-const PathStripe = ({ path }: { path: string }) => {
+const PathStripe = ({
+  path,
+  singleBlog,
+}: {
+  path: string;
+  singleBlog?: any;
+}) => {
   return (
     <Container className="main">
       <div>
-        {<Link to="/">Home</Link>}
-        {` `}/{` ${path}`}
+        {<Link to="/">{`Home / `}</Link>}
+        {singleBlog && <Link to="/blogs">{`Blogs / `}</Link>}
+        {` ${path}`}
       </div>
     </Container>
   );
