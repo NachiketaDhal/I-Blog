@@ -18,12 +18,19 @@ const SingleBlog = () => {
   const history = useHistory();
 
   const fetchBlogPost = async () => {
-    setLoading(true);
-    const fetchedBlog = await axios.get(`http://localhost:8000/api/blog/${id}`);
-    // console.log(fetchedBlog.data.foundBlog);
+    try {
+      setLoading(true);
+      const fetchedBlog = await axios.get(
+        `http://localhost:8000/api/blog/${id}`
+      );
+      // console.log(fetchedBlog.data.foundBlog);
 
-    setBlog(fetchedBlog.data.foundBlog);
-    setLoading(false);
+      setBlog(fetchedBlog.data.foundBlog);
+      setLoading(false);
+    } catch (err) {
+      alert("Something went wrong");
+      history.push("/blogs");
+    }
   };
 
   const deleteBlogPost = async () => {

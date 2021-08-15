@@ -12,8 +12,8 @@ const Comments = ({ pComments }: { pComments: IComment[] | undefined }) => {
     pComments || [{ name: "User1", comment: "Good Post!" }]
   );
 
-  console.log(pComments);
-  console.log(comments);
+  // console.log(pComments);
+  // console.log(comments);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

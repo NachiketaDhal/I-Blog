@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 import { IBlog } from "../interfaces";
@@ -13,16 +13,24 @@ const Blogs = () => {
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const history = useHistory();
+
   const fetchBlogs = async () => {
-    setLoading(true);
-    const fetchedBlogs = await axios.get("http://localhost:8000/api/blogs");
-    setBlogData(fetchedBlogs.data.blogs);
-    setLoading(false);
-    console.log(fetchedBlogs);
+    try {
+      setLoading(true);
+      const fetchedBlogs = await axios.get("http://localhost:8000/api/blogs");
+      setBlogData(fetchedBlogs.data.blogs);
+      setLoading(false);
+      // console.log(fetchedBlogs);
+    } catch (error) {
+      alert("Failed to fetch blogs");
+      history.push("/");
+    }
   };
 
   useEffect(() => {
     fetchBlogs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {

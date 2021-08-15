@@ -3,6 +3,7 @@ import axios from "axios";
 import Styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import PathStripe from "../components/PathStripe";
+import Underline from "../components/Underline";
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
@@ -36,6 +37,10 @@ const CreateBlog = () => {
           onSubmit={handleSubmit}
           className="upload-form"
         >
+          <div style={{ marginBottom: "40px" }}>
+            <h1 style={{ color: "#323232" }}>Create a blog</h1>
+            <Underline />
+          </div>
           <input
             type="text"
             placeholder="Title"
@@ -60,11 +65,7 @@ const CreateBlog = () => {
           ></textarea>
           <br />
           <br />
-          <button
-            type="submit"
-            className="btn-submit"
-            style={{ float: "none" }}
-          >
+          <button type="submit" className="btn-submit">
             Create
           </button>
         </form>
