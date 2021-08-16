@@ -53,7 +53,12 @@ const SingleBlog = () => {
   }, []);
 
   if (loading) {
-    return <Loading />;
+    return (
+      <div>
+        <PathStripe path={id} singleBlog />
+        <Loading />
+      </div>
+    );
   }
 
   return (
