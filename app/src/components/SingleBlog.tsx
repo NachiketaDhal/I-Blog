@@ -9,10 +9,12 @@ import Button from "./Button";
 import Comments from "./Comments";
 import Loading from "./Loading";
 import PathStripe from "./PathStripe";
+import Alert from "./Alert";
 
 const SingleBlog = () => {
   const [loading, setLoading] = useState(false);
   const [blog, setBlog] = useState<IBlog | undefined>();
+  const [calert, setCalert] = useState(false);
 
   const { id } = useParams<any>();
   // console.log(id);
@@ -40,8 +42,10 @@ const SingleBlog = () => {
         return;
       }
       await axios.delete(`http://localhost:8000/api/blog/${id}`);
-      alert("Post deleted successfully");
-      history.push("/blogs");
+      setCalert(true);
+      setTimeout(() => {
+        history.push("/blogs");
+      }, 2500);
     } catch (error) {
       alert("Failed to delete");
     }
@@ -51,6 +55,13 @@ const SingleBlog = () => {
     fetchBlogPost();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setCalert(false);
+    }, 2500);
+    return () => clearTimeout(timeout);
+  }, [calert]);
 
   if (loading) {
     return (
@@ -63,6 +74,7 @@ const SingleBlog = () => {
 
   return (
     <React.Fragment>
+      {calert && <Alert color="red" message="Post deleted successfully" />}
       <PathStripe path={id} singleBlog />
       <Container>
         <div className="blog-heading">

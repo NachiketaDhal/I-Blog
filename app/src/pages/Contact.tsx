@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import PathStripe from "../components/PathStripe";
 import Underline from "../components/Underline";
 import { IContact } from "../interfaces";
+import Alert from "../components/Alert";
 import "./contact.css";
 
 const Contact = () => {
@@ -12,6 +13,8 @@ const Contact = () => {
     number: "",
     message: "",
   });
+  const [alert, setAlert] = useState(false);
+  const [emptyFields, setEmptyFields] = useState(false);
 
   const { name, email, number, message } = inputValues;
 
@@ -23,14 +26,35 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !number || !message) {
-      alert("Please fill up all the fileds");
+      setAlert(true);
+      setEmptyFields(true);
       return;
     }
-    alert("Your response has been submitted, we will contact you soon!");
+    setAlert(true);
+    setEmptyFields(false);
+    setInputValues({ email: "", message: "", name: "", number: "" });
   };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setAlert(false);
+      setEmptyFields(false);
+    }, 2500);
+    return () => clearTimeout(timeout);
+  }, [alert, emptyFields]);
 
   return (
     <div>
+      {alert && (
+        <Alert
+          color={emptyFields ? "red" : "lightgreen"}
+          message={
+            emptyFields
+              ? "Please fill up all the fileds"
+              : "Your response has been submitted"
+          }
+        />
+      )}
       <PathStripe path="Contact" />
       <div className="upload-container">
         <form action="" className="upload-form">

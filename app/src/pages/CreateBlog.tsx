@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Styled from "styled-components";
 import { useHistory } from "react-router-dom";
+
 import PathStripe from "../components/PathStripe";
 import Underline from "../components/Underline";
+import Alert from "../components/Alert";
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [emptyData, setEmptyData] = useState(true);
 
   const history = useHistory();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title || !description || !content) {
-      alert("Please provide all data");
+      setAlert(true);
+      setEmptyData(true);
       return;
     }
     await axios.post("http://localhost:8000/api/blog/create", {
@@ -23,12 +28,33 @@ const CreateBlog = () => {
       description,
       content,
     });
-    alert("Post created successfully");
-    history.push("/blogs");
+    setAlert(true);
+    setEmptyData(false);
+    setTimeout(() => {
+      history.push("/blogs");
+    }, 4000);
+    setTitle("");
+    setDescription("");
+    setContent("");
   };
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setAlert(false);
+    }, 2500);
+    return () => clearTimeout(timeOut);
+  }, [alert]);
 
   return (
     <React.Fragment>
+      {alert && (
+        <Alert
+          color={emptyData ? "red" : "lightgreen"}
+          message={
+            emptyData ? "Please provide all data" : "Post created successfully"
+          }
+        />
+      )}
       <PathStripe path="Create" />
       <Container>
         <form

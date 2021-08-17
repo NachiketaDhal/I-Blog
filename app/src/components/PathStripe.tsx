@@ -5,12 +5,15 @@ import Styled from "styled-components";
 const PathStripe = ({
   path,
   singleBlog,
+  children,
 }: {
   path: string;
   singleBlog?: any;
+  children?: any;
 }) => {
   return (
     <Container className="main">
+      {/* {children} */}
       <div>
         {<Link to="/">{`Home / `}</Link>}
         {singleBlog && <Link to="/blogs">{`Blogs / `}</Link>}
