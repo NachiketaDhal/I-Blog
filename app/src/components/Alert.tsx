@@ -3,7 +3,7 @@ import Styled from "styled-components";
 
 const Alert = ({ color, message }: { color: string; message: string }) => {
   return (
-    <Container style={{ width: "97vw" }}>
+    <Container style={{ width: "100vw" }}>
       <span style={{ backgroundColor: color }}>{message}</span>
     </Container>
   );

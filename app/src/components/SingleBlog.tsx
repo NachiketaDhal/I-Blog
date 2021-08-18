@@ -10,6 +10,7 @@ import Comments from "./Comments";
 import Loading from "./Loading";
 import PathStripe from "./PathStripe";
 import Alert from "./Alert";
+import "./singleBlog.css";
 
 const SingleBlog = () => {
   const [loading, setLoading] = useState(false);
@@ -75,7 +76,9 @@ const SingleBlog = () => {
   return (
     <React.Fragment>
       {calert && <Alert color="red" message="Post deleted successfully" />}
-      <PathStripe path={id} singleBlog />
+      <div className="path-stripe">
+        <PathStripe path={id} singleBlog />
+      </div>
       <Container>
         <div className="blog-heading">
           <h1>{blog?.title}</h1>
@@ -168,6 +171,28 @@ const Container = Styled.section`
       border-color: #000000;
       color: #000000;
     }
+    }
+  }
+
+  @media (max-width: 600px) {
+    margin: 50px auto;
+    .blog-heading {
+      h1 {
+        font-size: 24px;
+      }
+    }
+    .hero-img {
+      img {
+        width: 100%;
+      }
+    }
+    .blog-content {
+      padding:  0;
+    }
+    .buttons-container {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
     }
   }
 `;

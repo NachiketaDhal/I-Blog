@@ -35,6 +35,13 @@ const Container = Styled.section`
   align-items: center;
   justify-content: space-around;
   transition: all .3s ease-in-out;
+  @media (max-width: 600px) {
+  /* .hero-large-img { */
+    height: 300px;
+    width: 320px;
+    padding: 10px;
+  /* } */
+}
   p {
     text-align: center;
     line-height: 1.8;

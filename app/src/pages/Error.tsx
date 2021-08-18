@@ -31,6 +31,16 @@ const Container = Styled.section`
     font-size: 40px;
     font-weight: bold;
   }
+
+  @media (max-width: 1200px) {
+    min-height: 100vh;
+  }
+  @media (max-width: 600px) {
+    min-height: 100vh;
+    h1 {
+      font-size: 100px;
+    }
+  }
 `;
 
 export default Error;

@@ -8,7 +8,7 @@ const About = () => {
   return (
     <Container>
       <PathStripe path="About" />
-      <div className="main">
+      <div className="main2">
         <img
           src="https://images.pexels.com/photos/62691/pexels-photo-62691.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=400"
           alt="about-img"
@@ -34,7 +34,7 @@ const About = () => {
 };
 
 const Container = Styled.section`
-  div.main {
+  div.main2 {
     display: flex;
     justify-content: space-around;
     max-width: 80%;
@@ -59,10 +59,39 @@ const Container = Styled.section`
     }
   }
 
-  @media(max-width: 900px) {
-    div.main {
+  @media (min-width: 910px) and (max-width: 1200px) {
+    section.main div {
+      /* justify-content: flex-start; */
+      /* padding-left: 80px; */
+
+    }
+    div.main2 {
+      flex-direction: column;
+      gap: 80px;
+      align-items: center;
+    }
+  }
+  @media (min-width: 650px) and (max-width: 900px) {
+    section.main div {
+      justify-content: flex-start;
+      padding-left: 80px;
+    }
+    div.main2 {
       flex-direction: column;
       gap: 30px;
+      align-items: center;
+    }
+  }
+  @media(max-width: 600px) {
+    div.main2 {
+      padding: 0 20px;
+      flex-direction: column;
+      gap: 30px;
+      min-width: 100%;
+      align-items: center;
+      img {
+        width: 300px;
+      }
     }
   }
 `;

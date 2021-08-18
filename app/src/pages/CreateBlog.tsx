@@ -46,7 +46,7 @@ const CreateBlog = () => {
   }, [alert]);
 
   return (
-    <React.Fragment>
+    <main style={{ minHeight: "100vh" }}>
       {alert && (
         <Alert
           color={emptyData ? "red" : "lightgreen"}
@@ -85,7 +85,7 @@ const CreateBlog = () => {
             value={content}
             placeholder="Content"
             className="input-text"
-            cols={47}
+            cols={32}
             rows={3}
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
@@ -96,7 +96,7 @@ const CreateBlog = () => {
           </button>
         </form>
       </Container>
-    </React.Fragment>
+    </main>
   );
 };
 

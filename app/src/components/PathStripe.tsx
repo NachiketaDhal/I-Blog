@@ -37,14 +37,22 @@ const Container = Styled.section`
     }
   }
 
-  @media(max-width: 900px) {
+  @media(min-width: 700px) {
+    div {
+      margin-left: 0;
+      display: flex;
+      /* justify-content: center; */
+      padding-left: 80px;
+    }
+  }
+
+  @media(max-width: 600px) {
     div {
       margin-left: 0;
       display: flex;
       justify-content: center;
     }
   }
-
 `;
 
 export default PathStripe;

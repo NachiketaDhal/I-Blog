@@ -108,6 +108,36 @@ div {
     border: 1px solid rgb(229, 231, 235);
   }
 }
+
+@media (max-width: 600px) {
+  .comments-container {
+      flex-direction: column;
+      gap: 60px;
+    }
+    .form-container {
+      padding-left: 0px;
+    }
+    .form {
+      input, textarea {
+        /* padding: 8px; */
+        width: 100%;
+    }
+}
+  }
+@media (min-width: 610px) and (max-width: 900px) {
+  .comments-container {
+      flex-direction: column;
+      gap: 60px;
+    }
+  }
+@media (min-width: 910px) and (max-width: 1200px) {
+    .form-container {
+      padding-left: 0px;
+      .form {
+        margin-right: 20px;
+      }
+    }
+  }
 `;
 
 export default Comments;
