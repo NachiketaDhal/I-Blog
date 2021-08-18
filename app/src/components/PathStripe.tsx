@@ -15,9 +15,8 @@ const PathStripe = ({
     <Container className="main">
       {/* {children} */}
       <div>
-        {<Link to="/">{`Home / `}</Link>}
-        {singleBlog && <Link to="/blogs">{`Blogs / `}</Link>}
-        {` ${path}`}
+        <Link to="/">Home / </Link>
+        {singleBlog && <Link to="/blogs">Blogs / </Link>} {path}
       </div>
     </Container>
   );

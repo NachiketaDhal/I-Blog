@@ -14,15 +14,16 @@
   width: 35%;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 810px) and (max-width: 1200px) {
   .upload-form {
     width: 50%;
   }
 }
 
-@media (max-width: 800px) {
+@media (min-width: 401px) and (max-width: 800px) {
   .upload-form {
     width: 80%;
+    padding: 1rem 2rem;
   }
 }
 

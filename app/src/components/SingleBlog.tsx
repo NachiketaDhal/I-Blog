@@ -20,13 +20,13 @@ const SingleBlog = () => {
   const { id } = useParams<any>();
   // console.log(id);
   const history = useHistory();
+  const url =
+    "https://iblog-assignment.herokuapp.com" || "http://localhost:8000";
 
   const fetchBlogPost = async () => {
     try {
       setLoading(true);
-      const fetchedBlog = await axios.get(
-        `http://localhost:8000/api/blog/${id}`
-      );
+      const fetchedBlog = await axios.get(`${url}/api/blog/${id}`);
       // console.log(fetchedBlog.data.foundBlog);
 
       setBlog(fetchedBlog.data.foundBlog);
@@ -42,7 +42,7 @@ const SingleBlog = () => {
       if (!window.confirm("Are you sure to delete this?")) {
         return;
       }
-      await axios.delete(`http://localhost:8000/api/blog/${id}`);
+      await axios.delete(`${url}/api/blog/${id}`);
       setCalert(true);
       setTimeout(() => {
         history.push("/blogs");

@@ -15,6 +15,8 @@ const CreateBlog = () => {
   const [emptyData, setEmptyData] = useState(true);
 
   const history = useHistory();
+  const url =
+    "https://iblog-assignment.herokuapp.com" || "http://localhost:8000";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ const CreateBlog = () => {
       setEmptyData(true);
       return;
     }
-    await axios.post("http://localhost:8000/api/blog/create", {
+    await axios.post(`${url}/api/blog/create`, {
       title,
       description,
       content,

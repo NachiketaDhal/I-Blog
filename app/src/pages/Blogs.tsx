@@ -14,11 +14,13 @@ const Blogs = () => {
   const [loading, setLoading] = useState(false);
 
   const history = useHistory();
+  const url =
+    "https://iblog-assignment.herokuapp.com" || "http://localhost:8000";
 
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const fetchedBlogs = await axios.get("http://localhost:8000/api/blogs");
+      const fetchedBlogs = await axios.get(`${url}/api/blogs`);
       setBlogData(fetchedBlogs.data.blogs);
       setLoading(false);
       // console.log(fetchedBlogs);
